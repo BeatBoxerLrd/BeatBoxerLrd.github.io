@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>瑞雪$东飞</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-03-06T18:18:30.208Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Liu Ruidong</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ArrayList</title>
+    <link href="http://yoursite.com/2018/03/07/ArrayList/"/>
+    <id>http://yoursite.com/2018/03/07/ArrayList/</id>
+    <published>2018-03-06T18:18:30.000Z</published>
+    <updated>2018-03-06T18:18:30.208Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>HashMap源码</title>
+    <link href="http://yoursite.com/2018/03/07/first/"/>
+    <id>http://yoursite.com/2018/03/07/first/</id>
+    <published>2018-03-06T17:41:32.000Z</published>
+    <updated>2018-03-06T18:07:12.299Z</updated>
+    
+    <content type="html"><![CDATA[<p>hash解决hash冲突的四个方法：<br>1.开放定址法<br>2.拉链法<br>3.再hash法<br>4.建立公共溢出区<br>五．hashMap源码<br>线程不安全</p><ol><li>hashMap底层结构<br> jdk1.8之前采用是位桶+链表的方式，散列链表<br>JDK1.8之后采用的是位桶+链表/红黑树的方式，也是非线程安全的。<br>2.他的每个节点其实就是一个Node结点，hash,key值，value值，next值。<br>3.hash()方法。<br>static final int hash(Object key) {<br> int h;<br> return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);<br>}<br>如果不无右移16位的话，他的hashcode的范围将是一个4亿大的空间，这样一来<br>导致hash冲突的概率特别低，一个4亿长的数组内存也是存不下的。<br>其实这段代码叫扰动函数，始得均匀分布。增加了低位的随机性。</li></ol><p>4.indexFor方法<br>static int indexFor(int h, int length) {<br>    return h &amp; (length-1);<br>}<br>这样设计的目的是使得均匀散列，因为hashMap中的扩容无论如何都是以2倍扩容，出始化的容量是16，这样一来length - 1的值就为全1，和一个hash值相于时就取的是其低几位。<br>5.hashMap的扩容<br>当某个桶中的键值对数量大于8个【9个起】，先尝试table数组进行扩容，桶数增加2倍，且桶数量大于等于64，则将底层实现从链表转为红黑树。<br>红黑树：<br>概念：1.根节点必须是黑色。2.叶子结点必须是黑色3.每个结点必须是黑色或者红色的一种。4.如果一个结点是红色，那么他的页子结点必须是黑色（null）。5.从任意一个结点到其页子结点的路径上黑色结点的个数的相等的。<br>// 如果桶中的键值对达到该阀值，则检测桶数量<br> int threshold; // 新的扩容resize临界值,当实际大小(容量*填充比)大于临界值时，会进行2倍扩容</p><p>扩容：hashmap实例里的元素个数大于threshold时执行resize(即桶数量扩容为2倍并散列原来的Entry)。<br>PS：threshold=桶数量*负载因子<br>构造方法中提到了两个很重要的参数：初始容量和加载因子。这两个参数是影响HashMap性能的重要参数，<br>    其中容量表示哈希表中槽的数量（即哈希数组的长度），初始容量是创建哈希表时的容量（从构造函数中可以看出，如果不指明，则默认为16），加载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，当哈希表中的条目数超出了加载因子与当前容量的乘积时，则要对该哈希表进行 resize 操作（即扩容）。<br>下面说下加载因子，<br>如果加载因子越大，对空间的利用更充分，但是查找效率会降低（链表长度会越来越长）；<br>如果加载因子太小，那么表中的数据将过于稀疏（很多空间还没用，就开始扩容了），对空间造成严重浪费。<br>如果我们在构造方法中不指定，则系统默认加载因子为0.75，这是一个比较理想的值，一般情况下我们是无需修改的。<br>另外，无论我们指定的容量为多少，构造方法都会将实际容量设为不小于指定容量的2的次方的一个数，且最大值不能超过2的30次方</p><p>6.hashMap中getValue方法<br>先获取key对用的hash值，然后用hash&amp;length-1相于得到在table数组中的初始位置，在判断key相不相等，然后遍历该链表或者该红黑树。<br>7.hashMap中的put方法<br>加入时先判断tab数组是不是为空，为空就按初始化容量，<br>然后在通过n-1&amp;hash求对应的位值，如果此位置为Null,直接新建一个结点插入其中即可，如果不为null就表示有hash冲突，进行处理即可</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;hash解决hash冲突的四个方法：&lt;br&gt;1.开放定址法&lt;br&gt;2.拉链法&lt;br&gt;3.再hash法&lt;br&gt;4.建立公共溢出区&lt;br&gt;五．hashMap源码&lt;br&gt;线程不安全&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;hashMap底层结构&lt;br&gt; jdk1.8之前采用是位桶+链表的方式，
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/03/07/hello-world/"/>
+    <id>http://yoursite.com/2018/03/07/hello-world/</id>
+    <published>2018-03-06T16:25:12.180Z</published>
+    <updated>2018-03-06T16:25:12.180Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
