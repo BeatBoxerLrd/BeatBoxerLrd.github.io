@@ -73,6 +73,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="瑞雪$东飞" type="application/atom+xml" />
 
@@ -81,16 +83,17 @@
 
 
 
-<meta name="description" content="漫长的路需要一步步的积累，脚踏实地才能走得更远，我坚信事在人为！">
-<meta property="og:type" content="website">
+<meta name="description" content="title: SpringIOC面试date: 2018-03-22 18:29:51tags: BeanFactory BeanDefinition ApplicationContext  生命周期 作用域 Spring IOC和DI比如说我的类A要使用B的方法，就需要把B类作为自己的属性 这样耦合度过高，现在只需要将这些对象的创建与销毁交给spring容器来操作，对其进行管理. 常见的IOC">
+<meta property="og:type" content="article">
 <meta property="og:title" content="瑞雪$东飞">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/03/22/SpringIOC面试/index.html">
 <meta property="og:site_name" content="瑞雪$东飞">
-<meta property="og:description" content="漫长的路需要一步步的积累，脚踏实地才能走得更远，我坚信事在人为！">
+<meta property="og:description" content="title: SpringIOC面试date: 2018-03-22 18:29:51tags: BeanFactory BeanDefinition ApplicationContext  生命周期 作用域 Spring IOC和DI比如说我的类A要使用B的方法，就需要把B类作为自己的属性 这样耦合度过高，现在只需要将这些对象的创建与销毁交给spring容器来操作，对其进行管理. 常见的IOC">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-27T15:59:26.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="瑞雪$东飞">
-<meta name="twitter:description" content="漫长的路需要一步步的积累，脚踏实地才能走得更远，我坚信事在人为！">
+<meta name="twitter:description" content="title: SpringIOC面试date: 2018-03-22 18:29:51tags: BeanFactory BeanDefinition ApplicationContext  生命周期 作用域 Spring IOC和DI比如说我的类A要使用B的方法，就需要把B类作为自己的属性 这样耦合度过高，现在只需要将这些对象的创建与销毁交给spring容器来操作，对其进行管理. 常见的IOC">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/22/SpringIOC面试/"/>
 
 
 
 
 
-  <title>瑞雪$东飞</title>
+  <title> | 瑞雪$东飞</title>
   
 
 
@@ -145,8 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -229,9 +231,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -261,9 +263,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/22/SpringIOC面试/" itemprop="url">未命名</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -313,9 +313,7 @@
       
 
       
-        
-          
-            <hr>
+        <hr>
 <p>title: SpringIOC面试<br>date: 2018-03-22 18:29:51<br>tags: BeanFactory BeanDefinition ApplicationContext  生命周期 作用域</p>
 <h1 id="Spring-IOC和DI"><a href="#Spring-IOC和DI" class="headerlink" title="Spring IOC和DI"></a><font color="#dd0000">Spring IOC和DI</font><br></h1><p><code>比如说我的类A要使用B的方法，就需要把B类作为自己的属性
 这样耦合度过高，现在只需要将这些对象的创建与销毁交给spring容器来操作，对其进行管理.</code></p>
@@ -332,8 +330,6 @@
 <h2 id="IOC容器的依赖注入过程"><a href="#IOC容器的依赖注入过程" class="headerlink" title="IOC容器的依赖注入过程"></a>IOC容器的依赖注入过程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">lazy-init:这个属性默认是false，就是在IOC容器的初始化过程中完成。</span><br><span class="line"></span><br><span class="line">lazy-init属性设置为true，就是进行懒加载，在IOC容器中得到getBean时，此时就是依赖注入的起点</span><br><span class="line"></span><br><span class="line">如果向IOC容器索要Bean索取时进行初始化的</span><br><span class="line"></span><br><span class="line">getBean方法执行会去触发 doGetBean方法，此时会去调用createBean方法，此时其实执行的方法是docreateBean方法，此时里面有两个方法createBeanInstance:此方法主要是创建Bean对象，还有一个初始化Bean的方法，initiaizaBean：初始化bean,初始化之前首先会先执行BeanName、BeanClassLoder、BeanFactory注入到bean容器中，执行初始化方法时会执行invokeInitMethod（此时如果配置文件中有init-Method，就会去调用invokeCustomerInitMethod）</span><br><span class="line"></span><br><span class="line">ApplicationContext和Bean的销毁</span><br><span class="line">初始化：prepareBeanFactory()</span><br><span class="line">销毁：doClose(),发出关闭信号，将bean对象销毁，关闭容器本身</span><br><span class="line">````</span><br></pre></td></tr></table></figure>
 <h3 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.Bean实例的创建，createBeanInstance</span><br><span class="line">2.在实行initilizaBean（初始化之前）会执行populationBean方法（此方法主要是为创建的bean实例设置属性）</span><br><span class="line">3.调用初始化方法InitilizaBean</span><br><span class="line">4.此时web容器可以通过IOC容器获取Bean并使用</span><br><span class="line">5.容器的销毁及Bean对象的销毁</span><br></pre></td></tr></table></figure>
 <h3 id="几种Bean的作用域"><a href="#几种Bean的作用域" class="headerlink" title="几种Bean的作用域"></a>几种Bean的作用域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">singleton：单例模式，只能创建一个对象  </span><br><span class="line">prototype:每次都会创建一个新的实例，共会创建多个对象实例  </span><br><span class="line">request：每次http请求中，都会创建一个bean，前提是bena留作一个webXmlAppicationContext  </span><br><span class="line">seesion:一个httpsession会话都会创建一个  </span><br><span class="line">global-seesion:一个全局的session会话  </span><br><span class="line"></span><br><span class="line">@AutoWared注解其实是在popularBean中实现的  </span><br><span class="line"></span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-          
-        
       
     </div>
     
@@ -350,142 +346,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/hashMap面试必知/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Liu Ruidong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="瑞雪$东飞">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/07/hashMap面试必知/" itemprop="url">HashMap源码</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T01:41:32+08:00">
-                2018-03-07
-              </time>
+              <a href="/2018/03/07/hashMap面试必知/" rel="next" title="HashMap源码">
+                <i class="fa fa-chevron-left"></i> HashMap源码
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>hash解决hash冲突的四个方法：<br>1.开放定址法<br>2.拉链法<br>3.再hash法<br>4.建立公共溢出区</p>
-<h3 id="hashMap源码"><a href="#hashMap源码" class="headerlink" title="hashMap源码"></a>hashMap源码</h3><p>线程不安全</p>
-<h4 id="1-hashMap底层结构"><a href="#1-hashMap底层结构" class="headerlink" title="1. hashMap底层结构"></a>1. hashMap底层结构</h4><pre><code>jdk1.8之前采用是位桶+链表的方式，散列链表
-</code></pre><p>JDK1.8之后采用的是位桶+链表/红黑树的方式，也是非线程安全的。  </p>
-<h4 id="2-他的每个节点其实就是一个Node结点，hash-key值，value值，next值。"><a href="#2-他的每个节点其实就是一个Node结点，hash-key值，value值，next值。" class="headerlink" title="2.他的每个节点其实就是一个Node结点，hash,key值，value值，next值。"></a>2.他的每个节点其实就是一个Node结点，hash,key值，value值，next值。</h4><h4 id="3-hash-方法。"><a href="#3-hash-方法。" class="headerlink" title="3.hash()方法。"></a>3.hash()方法。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static final int hash(Object key) &#123;</span><br><span class="line">    int h;</span><br><span class="line">    return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果不无右移16位的话，他的hashcode的范围将是一个4亿大的空间，这样一来<br>导致hash冲突的概率特别低，一个4亿长的数组内存也是存不下的。<br>其实这段代码叫扰动函数，始得均匀分布。增加了低位的随机性。  </p>
-<h4 id="4-indexFor方法"><a href="#4-indexFor方法" class="headerlink" title="4.indexFor方法"></a>4.indexFor方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">static int indexFor(int h, int length) &#123; </span><br><span class="line">    return h &amp; (length-1); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样设计的目的是使得均匀散列，因为hashMap中的扩容无论如何都是以2倍扩容，出始化的容量是16，这样一来length - 1的值就为全1，和一个hash值相于时就取的是其低几位。<br>5.hashMap的扩容<br>当某个桶中的键值对数量大于8个【9个起】，先尝试table数组进行扩容，桶数增加2倍，且桶数量大于等于64，则将底层实现从链表转为红黑树。</p>
-<h4 id="红黑树："><a href="#红黑树：" class="headerlink" title="红黑树："></a>红黑树：</h4><p>概念：<br>1.根节点必须是黑色。<br>2.叶子结点必须是黑色<br>3.每个结点必须是黑色或者红色的一种。<br>4.如果一个结点是红色，那么他的页子结点必须是黑色（null）。<br>5.从任意一个结点到其页子结点的路径上黑色结点的个数的相等的。<br>// 如果桶中的键值对达到该阀值，则检测桶数量<br> int threshold; // 新的扩容resize临界值,当实际大小(容量<em>填充比)大于临界值时，会进行2倍<br> <font color="#0xff0000">扩容</font><br>扩容：hashmap实例里的元素个数大于threshold时执行resize(即桶数量扩容为2倍并散列原来的Entry)。<br>PS：threshold=桶数量</em>负载因子<br>构造方法中提到了两个很重要的参数：初始容量和加载因子。这两个参数是影响HashMap性能的重要参数，<br>    其中容量表示哈希表中槽的数量（即哈希数组的长度），初始容量是创建哈希表时的容量（从构造函数中可以看出，如果不指明，则默认为16），加载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，当哈希表中的条目数超出了加载因子与当前容量的乘积时，则要对该哈希表进行 resize 操作（即扩容）。<br>下面说下加载因子，<br>如果加载因子越大，对空间的利用更充分，但是查找效率会降低（链表长度会越来越长）；<br>如果加载因子太小，那么表中的数据将过于稀疏（很多空间还没用，就开始扩容了），对空间造成严重浪费。<br>如果我们在构造方法中不指定，则系统默认加载因子为0.75，这是一个比较理想的值，一般情况下我们是无需修改的。<br>另外，无论我们指定的容量为多少，构造方法都会将实际容量设为不小于指定容量的2的次方的一个数，且最大值不能超过2的30次方  </p>
-<h4 id="6-hashMap中getValue方法"><a href="#6-hashMap中getValue方法" class="headerlink" title="6.hashMap中getValue方法"></a>6.hashMap中getValue方法</h4><p>先获取key对用的hash值，然后用hash&amp;length-1相于得到在table数组中的初始位置，在判断key相不相等，然后遍历该链表或者该红黑树。  </p>
-<h4 id="7-hashMap中的put方法"><a href="#7-hashMap中的put方法" class="headerlink" title="7.hashMap中的put方法"></a>7.hashMap中的put方法</h4><p>加入时先判断tab数组是不是为空，为空就按初始化容量，<br>然后在通过n-1&amp;hash求对应的位值，如果此位置为Null,直接新建一个结点插入其中即可，如果不为null就表示有hash冲突，进行处理即可</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -495,138 +377,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Liu Ruidong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="瑞雪$东飞">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/07/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T00:25:12+08:00">
-                2018-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -634,6 +389,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -654,8 +413,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -708,6 +476,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-IOC和DI"><span class="nav-number">1.</span> <span class="nav-text">Spring IOC和DI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的IOC的容器："><span class="nav-number">1.0.1.</span> <span class="nav-text">常见的IOC的容器：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanFactory与FactoryBean"><span class="nav-number">1.0.2.</span> <span class="nav-text">BeanFactory与FactoryBean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeanDefinition"><span class="nav-number">1.0.3.</span> <span class="nav-text">BeanDefinition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认的一个容器DefaultListableBeanFactory"><span class="nav-number">1.0.4.</span> <span class="nav-text">默认的一个容器DefaultListableBeanFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XmlBeanFactory的编程式实现"><span class="nav-number">1.0.5.</span> <span class="nav-text">XmlBeanFactory的编程式实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#另一个高级容易ApplictionContext"><span class="nav-number">1.0.6.</span> <span class="nav-text">另一个高级容易ApplictionContext</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOC容器的初始化过程"><span class="nav-number">1.1.</span> <span class="nav-text">IOC容器的初始化过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Resource资源的定位过程"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">Resource资源的定位过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IOC容器的依赖注入过程"><span class="nav-number">1.2.</span> <span class="nav-text">IOC容器的依赖注入过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean的生命周期"><span class="nav-number">1.2.1.</span> <span class="nav-text">Bean的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几种Bean的作用域"><span class="nav-number">1.2.2.</span> <span class="nav-text">几种Bean的作用域</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -848,6 +632,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
