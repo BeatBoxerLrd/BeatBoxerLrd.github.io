@@ -263,7 +263,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/22/SpringIOC面试/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/03/22/SpringIOC面试/" itemprop="url">SpringIOC面试</a></h1>
         
 
         <div class="post-meta">
@@ -315,9 +315,7 @@
       
         
           
-            <hr>
-<p>title: SpringIOC面试<br>date: 2018-03-22 18:29:51</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags: "></a>tags: </h2><h1 id="Spring-IOC和DI"><a href="#Spring-IOC和DI" class="headerlink" title="Spring IOC和DI"></a>Spring IOC和DI</h1><p><code>比如说我的类A要使用B的方法，就需要把B类作为自己的属性
+            <h1 id="Spring-IOC和DI"><a href="#Spring-IOC和DI" class="headerlink" title="Spring IOC和DI"></a>Spring IOC和DI</h1><p><code>比如说我的类A要使用B的方法，就需要把B类作为自己的属性
 这样耦合度过高，现在只需要将这些对象的创建与销毁交给spring容器来操作，对其进行管理.</code></p>
 <h3 id="常见的IOC的容器："><a href="#常见的IOC的容器：" class="headerlink" title="常见的IOC的容器："></a>常见的IOC的容器：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BeanFactory 和 ApplicationContext</span><br><span class="line"></span><br><span class="line">BeanFactory规范，是一个简单的容器定义了Bean常用的方法getBean,getType,getAlise</span><br><span class="line">经常DefaultListableBeanFactory,底下有经常用的xmlBeanDefinition,主要可以读取以xml形式定义的BeanDefinition,beanDefinition是SpringIOC容器中的一种数据类型。</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
 <h3 id="BeanFactory与FactoryBean"><a href="#BeanFactory与FactoryBean" class="headerlink" title="BeanFactory与FactoryBean"></a>BeanFactory与FactoryBean</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BeanFactory是一个bean工厂，而FactoryBean是一个工厂bean，可以用&amp;FactoryBean获取FactoryBean对象。</span><br></pre></td></tr></table></figure>
