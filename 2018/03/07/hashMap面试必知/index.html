@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="hashmap," />
 
 
 
@@ -82,13 +82,14 @@
 
 
 <meta name="description" content="hash解决hash冲突的四个方法：1.开放定址法2.拉链法3.再hash法4.建立公共溢出区 hashMap源码线程不安全 1. hashMap底层结构jdk1.8之前采用是位桶+链表的方式，散列链表 JDK1.8之后采用的是位桶+链表/红黑树的方式，也是非线程安全的。   2.他的每个节点其实就是一个Node结点，hash,key值，value值，next值。3.hash()方法。1234st">
+<meta name="keywords" content="hashmap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap源码">
 <meta property="og:url" content="http://yoursite.com/2018/03/07/hashMap面试必知/index.html">
 <meta property="og:site_name" content="瑞雪$东飞">
 <meta property="og:description" content="hash解决hash冲突的四个方法：1.开放定址法2.拉链法3.再hash法4.建立公共溢出区 hashMap源码线程不安全 1. hashMap底层结构jdk1.8之前采用是位桶+链表的方式，散列链表 JDK1.8之后采用的是位桶+链表/红黑树的方式，也是非线程安全的。   2.他的每个节点其实就是一个Node结点，hash,key值，value值，next值。3.hash()方法。1234st">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-07T09:20:13.571Z">
+<meta property="og:updated_time" content="2018-03-31T05:48:07.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap源码">
 <meta name="twitter:description" content="hash解决hash冲突的四个方法：1.开放定址法2.拉链法3.再hash法4.建立公共溢出区 hashMap源码线程不安全 1. hashMap底层结构jdk1.8之前采用是位桶+链表的方式，散列链表 JDK1.8之后采用的是位桶+链表/红黑树的方式，也是非线程安全的。   2.他的每个节点其实就是一个Node结点，hash,key值，value值，next值。3.hash()方法。1234st">
@@ -202,8 +203,18 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
             
@@ -284,6 +295,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/集合/" itemprop="url" rel="index">
+                    <span itemprop="name">集合</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -337,6 +370,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/hashmap/" rel="tag"># hashmap</a>
+          
+        </div>
+      
 
       
       
@@ -345,10 +384,6 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/03/07/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
             
           </div>
 
@@ -439,14 +474,32 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
