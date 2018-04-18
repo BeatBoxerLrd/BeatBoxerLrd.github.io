@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-04T10:52:59.433Z</updated>
+  <updated>2018-04-18T10:08:26.593Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>代码编辑软件</title>
+    <link href="http://yoursite.com/2018/04/18/%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E8%BD%AF%E4%BB%B6/"/>
+    <id>http://yoursite.com/2018/04/18/代码编辑软件/</id>
+    <published>2018-04-18T10:08:26.000Z</published>
+    <updated>2018-04-18T10:08:26.593Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>B树，B+树，红黑树</title>
+    <link href="http://yoursite.com/2018/04/11/B%E6%A0%91%EF%BC%8CB+%E6%A0%91%EF%BC%8C%E7%BA%A2%E9%BB%91%E6%A0%91/"/>
+    <id>http://yoursite.com/2018/04/11/B树，B+树，红黑树/</id>
+    <published>2018-04-10T16:22:00.000Z</published>
+    <updated>2018-04-10T17:05:04.125Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="磁盘的读取"><a href="#磁盘的读取" class="headerlink" title="磁盘的读取"></a>磁盘的读取</h3><p>磁盘：机械运动来读取数据，分为寻到时间，旋转延迟，传输时间<br>这个成本是访问内存的十几万倍<br>预读：是将数据读取到内存，相邻数据读取到内存缓冲区<br>数据库索引存储在磁盘上，表的数据量比较大时，索引的大小也随着增长，不可能加载所有，只能逐一加载每个磁盘页<br>每个磁盘页就是一个结点<br>每次磁盘IO读取的数据称为一页（4k,8k）<br>二叉查找树就是这一种，最坏的情况磁盘IO的次数由树的高度决定  </p><h3 id="B树，B-树"><a href="#B树，B-树" class="headerlink" title="B树，B-树"></a>B树，B-树</h3><h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">①：一个m阶的B-树，最多拥有m个子树  </span><br><span class="line">②:根节点至少有2颗子树  </span><br><span class="line">③：分支结点最少要有m/2个子树，要向上取整  </span><br><span class="line">④：每一层中，页子结点的值是按照升序进行存储的  </span><br><span class="line">⑤:每个结点最多有m-1的key</span><br></pre></td></tr></table></figure><h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">由于B-树类似于二叉树，查找速率也不高，所以就有了B+树类似于二叉树，查找速率也不高，所以就有了B  </span><br><span class="line">①:m阶（有m个子树）的节点包含有m个元素  </span><br><span class="line">②：根节点和分支结点不保存数据，只用于存储索引，所有书都存在页子结点中  </span><br><span class="line">③：所有分支结点和根结点都同时存在于子节点中  </span><br><span class="line">④：页子结点包含所有的关键字以及执行数据的指针</span><br></pre></td></tr></table></figure><h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">①：每个结点必须是红色或者黑色  </span><br><span class="line">②：根结点必须是黑色  </span><br><span class="line">③：页子结点必须是黑色  </span><br><span class="line">④：如果一个结点是红色，则叶子结点必须是黑色  </span><br><span class="line">⑤：从任意一结点到每个叶子结点的所有路径上包含的黑色结点数目相同</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;磁盘的读取&quot;&gt;&lt;a href=&quot;#磁盘的读取&quot; class=&quot;headerlink&quot; title=&quot;磁盘的读取&quot;&gt;&lt;/a&gt;磁盘的读取&lt;/h3&gt;&lt;p&gt;磁盘：机械运动来读取数据，分为寻到时间，旋转延迟，传输时间&lt;br&gt;这个成本是访问内存的十几万倍&lt;br&gt;预读：是将数据
+      
+    
+    </summary>
+    
+      <category term="数据结构" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="B树" scheme="http://yoursite.com/tags/B%E6%A0%91/"/>
+    
+      <category term="B+树" scheme="http://yoursite.com/tags/B-%E6%A0%91/"/>
+    
+      <category term="红黑树" scheme="http://yoursite.com/tags/%E7%BA%A2%E9%BB%91%E6%A0%91/"/>
+    
+  </entry>
   
   <entry>
     <title>IDEA创建多module继承项目</title>
